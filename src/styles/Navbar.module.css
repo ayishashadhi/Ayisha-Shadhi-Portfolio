@@ -253,4 +253,10 @@
     top: 1rem;
     right: 5%;
   }
+  .navbar {
+    top: 1rem;
+  }
+  .themeToggle {
+    top: 1rem;
+  }
 }

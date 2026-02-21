@@ -76,8 +76,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 800px;
-  height: 800px;
+  width: min(90vw, 800px);
+  height: min(90vw, 800px);
   border: 1px solid rgba(0, 245, 255, 0.05);
   border-radius: 50%;
   animation: rotateClockwise 60s linear infinite;
@@ -427,4 +427,20 @@
 @media (max-width: 768px) {
   .name { font-size: 3rem; }
   .tagline { font-size: 1.1rem; flex-direction: column; height: auto; }
+  .ctaContainer {
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    align-items: center;
+  }
+  .ctaButton {
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .name { font-size: 2.2rem; }
+  .greeting { font-size: 0.9rem; letter-spacing: 2px; }
 }
