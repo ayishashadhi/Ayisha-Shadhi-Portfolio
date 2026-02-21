@@ -32,7 +32,7 @@ const Contact = () => {
       <div className={styles.gridOverlay}></div>
       <div className={styles.sectionHeader}>
         <h2 className={styles.heading}>
-          <DecipherText text="ESTABLISH_UPLINK" delay={300} />
+          <DecipherText text="CONTACT_UPLINK" delay={300} />
         </h2>
         <div className={styles.headerLine}></div>
       </div>

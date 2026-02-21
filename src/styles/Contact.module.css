@@ -1,9 +1,6 @@
 .contact {
   min-height: 100vh;
   padding: 6rem 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   position: relative;
   overflow: hidden;
   background: radial-gradient(circle at 50% 50%, rgba(189, 0, 255, 0.05) 0%, transparent 70%);
@@ -12,11 +9,18 @@
   align-items: center;
 }
 
+@media (max-width: 768px) {
+  .contact {
+    padding: 4rem 1rem;
+  }
+}
+
 .sectionHeader {
   text-align: center;
   margin-bottom: 4rem;
   position: relative;
   z-index: 2;
+  width: 100%;
 }
 
 .heading {
@@ -26,6 +30,17 @@
   text-shadow: var(--glow-cyan);
   margin-bottom: 1rem;
   letter-spacing: 5px;
+  word-break: break-all;
+}
+
+@media (max-width: 768px) {
+  .sectionHeader {
+    margin-bottom: 2rem;
+  }
+  .heading {
+    font-size: 1.8rem;
+    letter-spacing: 3px;
+  }
 }
 
 .headerLine {
@@ -51,7 +66,7 @@
 
 /* Holographic Terminal Container */
 .container {
-  width: 100%;
+  width: calc(100% - 2rem);
   max-width: 800px;
   background: var(--glass-bg);
   backdrop-filter: blur(15px);
@@ -61,6 +76,7 @@
   box-shadow: var(--glass-shadow);
   position: relative;
   overflow: hidden;
+  margin: 0 1rem;
 }
 
 .scanline {
@@ -115,6 +131,16 @@
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid var(--glass-border);
+}
+
+@media (max-width: 480px) {
+  .terminalHeader {
+    padding: 0.6rem 1rem;
+  }
+  .terminalTitle {
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+  }
 }
 
 .terminalControls {

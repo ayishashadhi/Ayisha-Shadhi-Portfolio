@@ -76,6 +76,26 @@ const Footer = () => {
           50% { transform: translateY(-5px); }
           100% { transform: translateY(0); }
         }
+
+        @media (max-width: 768px) {
+          .footer {
+            padding: 1.5rem 1rem;
+          }
+          .socialContainer {
+            gap: 1rem;
+          }
+          .socialLink {
+            width: 32px;
+            height: 32px;
+          }
+          .icon {
+            width: 16px;
+            height: 16px;
+          }
+          .footer p {
+            font-size: 0.85rem;
+          }
+        }
       `}</style>
     </footer>
   );
