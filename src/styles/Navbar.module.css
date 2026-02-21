@@ -1,0 +1,256 @@
+.navbar {
+  position: fixed;
+  top: 2rem;
+  right: 5%;
+  z-index: 1000;
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.scrolled {
+  top: 1.5rem;
+  right: 3%;
+}
+
+.container {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  position: relative;
+}
+
+.logo {
+  z-index: 1002;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.logoCircle {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--accent-cyan);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.4s ease;
+  box-shadow: var(--glow-cyan);
+}
+
+.logo:hover .logoCircle {
+  transform: scale(1.1) rotate(90deg);
+  border-color: var(--accent-purple);
+  box-shadow: var(--glow-purple);
+}
+
+.logoImage {
+  height: 30px;
+  transition: transform 0.4s ease;
+}
+
+.logoRipple {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  border: 1px solid var(--accent-cyan);
+  animation: ripple 2s infinite;
+  opacity: 0;
+  pointer-events: none;
+}
+
+@keyframes ripple {
+  0% { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+
+.menuContainer {
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%) translateX(30px) scale(0.9);
+  background: var(--glass-bg);
+  backdrop-filter: blur(25px);
+  border: 1px solid var(--glass-border);
+  border-radius: 30px 0 0 30px;
+  padding: 1.5rem 2rem 1.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: var(--glass-shadow);
+  margin-right: -10px;
+}
+
+.menuContainer.open {
+  transform: translateY(-50%) translateX(0) scale(1);
+  opacity: 1;
+  pointer-events: all;
+  border-right: none;
+}
+
+.menuHeader {
+  border-bottom: 1px solid var(--glass-border);
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.menuLabel {
+  font-family: monospace;
+  font-size: 0.7rem;
+  color: var(--accent-purple);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.linksWrapper {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.link {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  position: relative;
+  padding: 0.5rem 0;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.linkNumber {
+  font-family: monospace;
+  font-size: 0.6rem;
+  color: var(--accent-cyan);
+  margin-bottom: 2px;
+  opacity: 0.7;
+}
+
+.link:hover {
+  color: var(--text-primary);
+  transform: translateY(-2px);
+}
+
+.link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent-cyan);
+  transition: width 0.3s ease;
+  box-shadow: var(--glow-cyan);
+}
+
+.link:hover::after {
+  width: 100%;
+}
+
+.themeToggle {
+  position: fixed;
+  top: 2rem;
+  left: 5%;
+  background: transparent;
+  border: none;
+  z-index: 1003;
+  cursor: pointer;
+  padding: 0;
+}
+
+.toggleTrack {
+  width: 50px;
+  height: 50px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  box-shadow: var(--glass-shadow);
+}
+
+.themeToggle:hover .toggleTrack {
+  border-color: var(--accent-purple);
+  box-shadow: var(--glow-purple);
+  transform: scale(1.1);
+}
+
+.toggleIcon {
+  font-size: 1.2rem;
+  transition: transform 0.5s ease;
+}
+
+.themeToggle:active .toggleIcon {
+  transform: scale(0.8);
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 999;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (max-width: 768px) {
+  .menuContainer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    padding: 2rem;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(100%);
+    margin-right: 0;
+    text-align: center;
+  }
+
+  .menuContainer.open {
+    transform: translateX(0);
+  }
+
+  .linksWrapper {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .link {
+    font-size: 1.8rem;
+    align-items: center;
+  }
+
+  .linkNumber {
+    font-size: 0.9rem;
+  }
+
+  .scrolled {
+    top: 1rem;
+    right: 5%;
+  }
+}

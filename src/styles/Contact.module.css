@@ -1,0 +1,292 @@
+.contact {
+  min-height: 100vh;
+  padding: 6rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 50%, rgba(189, 0, 255, 0.05) 0%, transparent 70%);
+}
+
+.gridOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(0, 245, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 245, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Holographic Terminal Container */
+.container {
+  width: 100%;
+  max-width: 800px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(15px);
+  border: 1px solid var(--glass-border);
+  padding: 0;
+  border-radius: 8px;
+  box-shadow: var(--glass-shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.scanline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 245, 255, 0.02) 50%,
+    transparent 100%
+  );
+  background-size: 100% 12px;
+  pointer-events: none;
+  z-index: 10;
+  animation: scanlineSweep 10s linear infinite;
+  opacity: 0.2;
+}
+
+@keyframes scanlineSweep {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(100%); }
+}
+
+/* Glowing Corners */
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(90deg, var(--accent-cyan) 2px, transparent 2px) 0 0,
+    linear-gradient(180deg, var(--accent-cyan) 2px, transparent 2px) 0 0,
+    linear-gradient(270deg, var(--accent-cyan) 2px, transparent 2px) 100% 100%,
+    linear-gradient(0deg, var(--accent-cyan) 2px, transparent 2px) 100% 100%;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.8;
+}
+
+/* Header Bar */
+.terminalHeader {
+  background: var(--bg-light);
+  padding: 0.8rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.terminalControls {
+  display: flex;
+  gap: 8px;
+}
+
+.control {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  opacity: 0.3;
+}
+
+.control.close { background: #ff5f56; opacity: 1; }
+.control.minimize { background: #ffbd2e; opacity: 1; }
+.control.maximize { background: #27c93f; opacity: 1; }
+
+.terminalTitle {
+  font-family: monospace;
+  color: var(--accent-cyan);
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.contentWrapper {
+  padding: 3rem;
+  position: relative;
+}
+
+/* Initial "Connection" Text */
+.statusLine {
+  font-family: monospace;
+  color: var(--accent-cyan);
+  margin-bottom: 2rem;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.blink {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* Form Styles */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.inputGroup {
+  display: flex;
+  gap: 2rem;
+}
+
+.formGroup {
+  position: relative;
+  flex: 1;
+}
+
+.input, .textarea {
+  width: 100%;
+  background: var(--bg-deep);
+  border: 1px solid var(--glass-border);
+  color: var(--text-primary);
+  padding: 1rem;
+  font-family: monospace;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  border-radius: 4px;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.input:focus, .textarea:focus {
+  outline: none;
+  border-color: var(--accent-cyan);
+  background: var(--bg-light);
+  box-shadow: var(--glow-cyan);
+}
+
+.label {
+  position: absolute;
+  top: -0.8rem;
+  left: 0.8rem;
+  background: var(--bg-deep);
+  padding: 0 0.5rem;
+  color: var(--accent-cyan);
+  font-family: monospace;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+/* Submit Button */
+.submitBtn {
+  background: transparent;
+  border: 1px solid var(--accent-purple);
+  color: var(--accent-purple);
+  padding: 1rem 2rem;
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+  margin-top: 1rem;
+  align-self: flex-end;
+}
+
+.submitBtn:hover {
+  background: rgba(189, 0, 255, 0.1);
+  box-shadow: 0 0 20px rgba(189, 0, 255, 0.4);
+  text-shadow: 0 0 8px var(--accent-purple);
+}
+
+.btnText {
+  position: relative;
+  z-index: 2;
+}
+
+.submitBtn:disabled {
+  border-color: #333;
+  color: #555;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+@media (max-width: 768px) {
+  .inputGroup {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .contentWrapper {
+    padding: 2rem 1.5rem;
+  }
+  
+  .submitBtn {
+    width: 100%;
+  }
+}
+
+/* Social Icons */
+.socialContainer {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0, 245, 255, 0.1);
+}
+
+.socialLink {
+  color: var(--text-secondary);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 245, 255, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  background: rgba(0,0,0,0.2);
+  /* Floating Animation with different delays */
+  animation: float 3s ease-in-out infinite;
+}
+
+.socialLink:nth-child(2) { animation-delay: 0.5s; }
+.socialLink:nth-child(3) { animation-delay: 1s; }
+.socialLink:nth-child(4) { animation-delay: 1.5s; }
+
+.icon {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.socialLink:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  background: rgba(0, 245, 255, 0.1);
+  box-shadow: 0 0 15px rgba(0, 245, 255, 0.4);
+  transform: translateY(-5px) scale(1.1);
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
