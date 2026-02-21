@@ -12,7 +12,6 @@ import Starfield from './components/Starfield';
 import AlienScout from './components/AlienScout';
 import AlienFX from './components/AlienFX';
 import Preloader from './components/Preloader';
-import CustomCursor from './components/CustomCursor';
 import './index.css';
 
 function App() {
@@ -44,7 +43,6 @@ function App() {
         <Preloader theme={theme} />
       ) : (
         <>
-          <CustomCursor />
           <AlienScout />
           <AlienFX />
           <Navbar theme={theme} toggleTheme={toggleTheme} />

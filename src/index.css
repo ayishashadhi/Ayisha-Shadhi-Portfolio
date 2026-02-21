@@ -66,12 +66,6 @@ body {
   overflow-x: hidden;
   min-height: 100vh;
   position: relative;
-  cursor: none; /* Hide default cursor */
-}
-
-/* Ensure all interactive elements ALSO have cursor: none to prevent flickering */
-a, button, [role="button"], input, textarea, select {
-  cursor: none !important;
 }
 
 /* Performance Optimization: Fixed background on pseudo-element */
