@@ -1,6 +1,6 @@
-# 🌌 Antigravity Portfolio
+# 🌌 Personal Portfolio
 
-A futuristic, high-performance developer portfolio built with a "Deep Space" cosmic aesthetic. This project features holographic UI components, scanline animations, and cyber-security themed project manifestos.
+A futuristic, high-performance developer portfolio built with a "Deep Space" cosmic aesthetic. This project features holographic UI components, scanline animations, and cybersecurity-themed project manifestos.
 
 ![Live Site](https://img.shields.io/badge/Live-Site-00f5ff?style=for-the-badge&logo=github&logoColor=white)
 [View Live Site](https://ayishashadhi.github.io/aysha-portfolio/)
