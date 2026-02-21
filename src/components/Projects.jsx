@@ -1,6 +1,8 @@
 import React from 'react';
 import styles from '../styles/Projects.module.css';
 import DecipherText from './DecipherText';
+import projectImg1 from '../assets/projectImg1.png';
+import projectImg2 from '../assets/projectImg2.png';
 
 const projectsData = [
   {
@@ -13,6 +15,7 @@ const projectsData = [
     status: "VERIFIED",
     build: "v2.1.0-alpha",
     security: "LEVEL_5",
+    image: projectImg1,
     link: "#"
   },
   {
@@ -25,6 +28,7 @@ const projectsData = [
     status: "ACTIVE",
     build: "v1.8.4-stable",
     security: "LEVEL_3",
+    image: projectImg2,
     link: "#"
   },
   {
@@ -37,6 +41,7 @@ const projectsData = [
     status: "SYNCED",
     build: "v1.2.9-beta",
     security: "LEVEL_4",
+    image: projectImg1, // Reusing 1 if 3rd doesn't exist
     link: "#"
   }
 ];
@@ -70,19 +75,12 @@ const Projects = () => {
                 <span className={styles.idTag}>ID: {project.binaryId}</span>
                 <span className={styles.coordTag}>{project.coords}</span>
               </div>
-              <div 
-                className={styles.projectImage} 
-                style={{ 
-                  background: 'linear-gradient(135deg, rgba(26, 11, 46, 0.4), rgba(45, 27, 78, 0.4))',
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  color: 'rgba(0, 245, 255, 0.2)',
-                  fontSize: '1.5rem',
-                  fontFamily: 'monospace'
-                }}
-              >
-                // DATA_ENCRYPTED_{project.security}
+              <div className={styles.projectImage}>
+                {project.image ? (
+                  <img src={project.image} alt={project.title} className={styles.actualImage} />
+                ) : (
+                  <span>// DATA_ENCRYPTED_{project.security}</span>
+                )}
               </div>
               <div className={styles.overlay}>
                 <a href={project.link} className={styles.viewBtn}>DECRYPT_LOG</a>

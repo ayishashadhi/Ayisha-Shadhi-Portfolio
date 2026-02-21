@@ -43,7 +43,7 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 3rem;
+  gap: 10rem;
   max-width: 1400px;
   width: 100%;
 }
@@ -236,15 +236,28 @@
 .projectImage {
   width: 100%;
   height: 100%;
+  position: relative;
+  background: linear-gradient(135deg, rgba(26, 11, 46, 0.4), rgba(45, 27, 78, 0.4));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: 'rgba(0, 245, 255, 0.2)';
+  font-size: '1.2rem';
+  font-family: 'monospace';
+  overflow: hidden;
+}
+
+.actualImage {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   transition: transform 0.5s ease;
   filter: grayscale(0.5) contrast(1.2);
 }
 
-.card:hover .projectImage {
+.card:hover .actualImage {
   transform: scale(1.1);
   filter: grayscale(0) contrast(1.1) brightness(1.2);
-  letter-spacing: 4px; /* Affects the // DATA_ENCRYPTED text */
 }
 
 .overlay {
@@ -377,6 +390,15 @@
 
 .card:hover .decoLine {
   transform: scaleX(1);
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    padding: 0 1rem;
+    max-width: 600px;
+  }
 }
 
 @media (max-width: 768px) {
