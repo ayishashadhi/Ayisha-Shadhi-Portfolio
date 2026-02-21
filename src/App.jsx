@@ -12,6 +12,7 @@ import Starfield from './components/Starfield';
 import AlienScout from './components/AlienScout';
 import AlienFX from './components/AlienFX';
 import Preloader from './components/Preloader';
+import CustomCursor from './components/CustomCursor';
 import './index.css';
 
 function App() {
@@ -33,16 +34,31 @@ function App() {
   }, []);
 
   const toggleTheme = () => {
-    // Keep theme toggling if user really wants, but cosmic is primarily dark
     setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
   };
 
+  const handleGlobalMouseMove = (e) => {
+    const { clientX, clientY } = e;
+    const { innerWidth, innerHeight } = window;
+    const x = (clientX / innerWidth - 0.5) * 40;
+    const y = (clientY / innerHeight - 0.5) * 40;
+    document.documentElement.style.setProperty('--mouse-x', `${clientX}px`);
+    document.documentElement.style.setProperty('--mouse-y', `${clientY}px`);
+    document.documentElement.style.setProperty('--global-px', `${x}px`);
+    document.documentElement.style.setProperty('--global-py', `${y}px`);
+  };
+
   return (
-    <div className="app-container" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <div 
+      className="app-container" 
+      onMouseMove={handleGlobalMouseMove}
+      style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}
+    >
       {loading ? (
         <Preloader theme={theme} />
       ) : (
         <>
+          <CustomCursor />
           <AlienScout />
           <AlienFX />
           <Navbar theme={theme} toggleTheme={toggleTheme} />

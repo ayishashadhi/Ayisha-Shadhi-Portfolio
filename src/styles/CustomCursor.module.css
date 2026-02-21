@@ -1,0 +1,48 @@
+.cursorDot {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    background: var(--accent-cyan);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10001;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 10px var(--accent-cyan);
+    transition: width 0.3s, height 0.3s, background 0.3s;
+}
+
+.cursorRing {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--accent-cyan);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10000;
+    transform: translate(-50%, -50%);
+    /* This creates the "magnetic" trailing effect */
+    transition: left 0.1s ease-out, 
+                top 0.1s ease-out, 
+                width 0.3s ease, 
+                height 0.3s ease, 
+                border-color 0.3s ease;
+    background: radial-gradient(circle, rgba(0, 245, 255, 0.05) 0%, transparent 70%);
+}
+
+.clicking {
+    transform: translate(-50%, -50%) scale(0.5);
+    background: var(--accent-purple);
+}
+
+.hovering {
+    width: 60px;
+    height: 60px;
+    border-color: var(--accent-purple);
+    background: radial-gradient(circle, rgba(189, 0, 255, 0.1) 0%, transparent 70%);
+}
+
+@media (max-width: 768px) {
+    .cursorDot, .cursorRing {
+        display: none;
+    }
+}

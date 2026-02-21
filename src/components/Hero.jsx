@@ -55,7 +55,6 @@ const Hero = () => {
     >
       <div className={styles.ambientOverlay}>
         <div className={styles.orbitalRing}></div>
-        <div className={styles.digitalDust}></div>
         {/* Parallax Data Nodes */}
         <div className={styles.dataNode} style={{ top: '20%', left: '15%', '--order': 1 }}>
           <span className={styles.nodePoint}></span>

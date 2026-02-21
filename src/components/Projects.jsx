@@ -3,6 +3,7 @@ import styles from '../styles/Projects.module.css';
 import DecipherText from './DecipherText';
 import projectImg1 from '../assets/projectImg1.png';
 import projectImg2 from '../assets/projectImg2.png';
+import projectImg3 from '../assets/projectImg3.png';
 
 const projectsData = [
   {
@@ -28,7 +29,7 @@ const projectsData = [
     status: "ACTIVE",
     build: "v1.8.4-stable",
     security: "LEVEL_3",
-    image: projectImg2,
+    image: projectImg3,
     link: "#"
   },
   {
@@ -41,7 +42,7 @@ const projectsData = [
     status: "SYNCED",
     build: "v1.2.9-beta",
     security: "LEVEL_4",
-    image: projectImg1, // Reusing 1 if 3rd doesn't exist
+    image: projectImg2, // Reusing 1 if 3rd doesn't exist
     link: "#"
   }
 ];
