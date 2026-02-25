@@ -2,27 +2,25 @@ import React, { useState, useEffect } from 'react';
 import styles from '../styles/CustomCursor.module.css';
 
 const CustomCursor = () => {
-    const [coords, setCoords] = useState({ x: 0, y: 0 });
     const [isHovering, setIsHovering] = useState(false);
     const [isClicking, setIsClicking] = useState(false);
 
     useEffect(() => {
-        const updateCoords = (e) => {
-            setCoords({ x: e.clientX, y: e.clientY });
+        const checkHover = (e) => {
             const target = e.target;
-            const isSelectable = target.closest('a, button, [role="button"]');
+            const isSelectable = target.closest('a, button, [role="button"], input, textarea');
             setIsHovering(!!isSelectable);
         };
 
         const handleMouseDown = () => setIsClicking(true);
         const handleMouseUp = () => setIsClicking(false);
 
-        window.addEventListener('mousemove', updateCoords);
+        window.addEventListener('mousemove', checkHover);
         window.addEventListener('mousedown', handleMouseDown);
         window.addEventListener('mouseup', handleMouseUp);
 
         return () => {
-            window.removeEventListener('mousemove', updateCoords);
+            window.removeEventListener('mousemove', checkHover);
             window.removeEventListener('mousedown', handleMouseDown);
             window.removeEventListener('mouseup', handleMouseUp);
         };
@@ -30,16 +28,10 @@ const CustomCursor = () => {
 
     return (
         <>
-            {/* Inner Main Dot */}
-            <div 
-                className={`${styles.cursorDot} ${isClicking ? styles.clicking : ''}`}
-                style={{ left: `${coords.x}px`, top: `${coords.y}px` }}
-            />
-            {/* Outer Magnetic Ring */}
-            <div 
-                className={`${styles.cursorRing} ${isHovering ? styles.hovering : ''}`}
-                style={{ left: `${coords.x}px`, top: `${coords.y}px` }}
-            />
+            {/* Inner Main Dot - Uses plain CSS variables for ultra-smooth movement */}
+            <div className={`${styles.cursorDot} ${isClicking ? styles.clicking : ''}`} />
+            {/* Outer Magnetic Ring - Uses plain CSS variables for ultra-smooth movement */}
+            <div className={`${styles.cursorRing} ${isHovering ? styles.hovering : ''}`} />
         </>
     );
 };

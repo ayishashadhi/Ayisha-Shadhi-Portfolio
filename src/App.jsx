@@ -33,25 +33,27 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
-  };
+  useEffect(() => {
+    const handleGlobalMouseMove = (e) => {
+      const { clientX, clientY } = e;
+      const { innerWidth, innerHeight } = window;
+      const x = (clientX / innerWidth - 0.5) * 40;
+      const y = (clientY / innerHeight - 0.5) * 40;
+      
+      // Update global CSS variables for all components to use
+      document.documentElement.style.setProperty('--mouse-x', `${clientX}px`);
+      document.documentElement.style.setProperty('--mouse-y', `${clientY}px`);
+      document.documentElement.style.setProperty('--global-px', `${x}px`);
+      document.documentElement.style.setProperty('--global-py', `${y}px`);
+    };
 
-  const handleGlobalMouseMove = (e) => {
-    const { clientX, clientY } = e;
-    const { innerWidth, innerHeight } = window;
-    const x = (clientX / innerWidth - 0.5) * 40;
-    const y = (clientY / innerHeight - 0.5) * 40;
-    document.documentElement.style.setProperty('--mouse-x', `${clientX}px`);
-    document.documentElement.style.setProperty('--mouse-y', `${clientY}px`);
-    document.documentElement.style.setProperty('--global-px', `${x}px`);
-    document.documentElement.style.setProperty('--global-py', `${y}px`);
-  };
+    window.addEventListener('mousemove', handleGlobalMouseMove);
+    return () => window.removeEventListener('mousemove', handleGlobalMouseMove);
+  }, []);
 
   return (
     <div 
       className="app-container" 
-      onMouseMove={handleGlobalMouseMove}
       style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}
     >
       {loading ? (
