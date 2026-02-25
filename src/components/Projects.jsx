@@ -17,7 +17,7 @@ const projectsData = [
     build: "v2.1.0-alpha",
     security: "LEVEL_5",
     image: projectImg1,
-    link: "#"
+    link: "https://github.com/ayishashadhi"
   },
   {
     id: "MANIFEST_NODE_02",
@@ -30,7 +30,7 @@ const projectsData = [
     build: "v1.8.4-stable",
     security: "LEVEL_3",
     image: projectImg3,
-    link: "#"
+    link: "https://github.com/ayishashadhi"
   },
   {
     id: "MANIFEST_NODE_03",
@@ -43,7 +43,7 @@ const projectsData = [
     build: "v1.2.9-beta",
     security: "LEVEL_4",
     image: projectImg2, // Reusing 1 if 3rd doesn't exist
-    link: "#"
+    link: "https://github.com/ayishashadhi"
   }
 ];
 
@@ -84,7 +84,14 @@ const Projects = () => {
                 )}
               </div>
               <div className={styles.overlay}>
-                <a href={project.link} className={styles.viewBtn}>DECRYPT_LOG</a>
+                <a 
+                  href={project.link} 
+                  className={styles.viewBtn}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  DECRYPT_LOG
+                </a>
               </div>
             </div>
             
