@@ -49,7 +49,7 @@ const projectsData = [
 
 const Projects = () => {
   return (
-    <section className={styles.projects} id="projects">
+    <section className={styles.projects}>
       <div className={styles.gridOverlay}></div>
       <h2 className={styles.heading}>
         <DecipherText text="Projects" delay={500} />

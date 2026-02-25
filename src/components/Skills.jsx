@@ -37,7 +37,7 @@ const skillsData = [
 
 const Skills = () => {
   return (
-    <section className={styles.skills} id="skills">
+    <section className={styles.skills}>
       <div className={styles.gridOverlay}></div>
       <h2 className={styles.heading}>
         <DecipherText text="Skills" delay={300} />

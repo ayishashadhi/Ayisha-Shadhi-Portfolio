@@ -31,13 +31,13 @@ const educationData = [
 
 const Education = () => {
   return (
-    <section className={styles.education} id="education">
+    <section className={styles.education}>
       <div className={styles.gridOverlay}></div>
-      
+
       <h2 className={styles.heading}>
         <DecipherText text="Education" delay={300} />
       </h2>
-      
+
       <div className={styles.moduleGrid}>
         {educationData.map((item) => (
           <div key={item.id} className={styles.moduleCard}>
@@ -53,7 +53,7 @@ const Education = () => {
               <span className={styles.entryId}>NODE_ID: {item.binaryId}</span>
               <span className={styles.cycle}>TERRA_CYCLE: {item.terraCycle}</span>
             </div>
-            
+
             <div className={styles.cardContent}>
               <h3 className={styles.degree}>{item.degree}</h3>
               <h4 className={styles.institution}>{item.institution}</h4>
@@ -64,7 +64,7 @@ const Education = () => {
               <span className={styles.status}>// STATUS: VERIFIED</span>
               <div className={styles.scanBar}></div>
             </div>
-            
+
             <div className={styles.brackets}></div>
           </div>
         ))}

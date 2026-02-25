@@ -22,8 +22,8 @@ const Footer = () => {
       <style>{`
         .footer {
           text-align: center;
-          padding: 2rem;
-          background-color: var(--bg-deep); /* Use theme variable */
+          padding: 3rem 2rem;
+          background-color: var(--bg-deep);
           color: var(--text-secondary);
           border-top: 1px solid rgba(0, 245, 255, 0.1);
           margin-top: auto;
@@ -31,17 +31,17 @@ const Footer = () => {
           z-index: 10;
         }
 
-        .socialContainer {
+        .footer .socialContainer {
           display: flex;
           justify-content: center;
           gap: 1.5rem;
-          margin-bottom: 1rem;
+          margin-bottom: 1.5rem;
         }
 
-        .socialLink {
+        .footer .socialLink {
           color: var(--text-secondary);
-          width: 36px;
-          height: 36px;
+          width: 40px;
+          height: 40px;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -50,20 +50,20 @@ const Footer = () => {
           transition: all 0.3s ease;
           position: relative;
           background: rgba(0,0,0,0.2);
-          animation: float 3s ease-in-out infinite;
+          animation: footerFloat 3s ease-in-out infinite;
         }
 
-        .socialLink:nth-child(2) { animation-delay: 0.5s; }
-        .socialLink:nth-child(3) { animation-delay: 1s; }
-        .socialLink:nth-child(4) { animation-delay: 1.5s; }
+        .footer .socialLink:nth-child(2) { animation-delay: 0.5s; }
+        .footer .socialLink:nth-child(3) { animation-delay: 1s; }
+        .footer .socialLink:nth-child(4) { animation-delay: 1.5s; }
 
-        .icon {
-          width: 18px;
-          height: 18px;
+        .footer .icon {
+          width: 20px;
+          height: 20px;
           fill: currentColor;
         }
 
-        .socialLink:hover {
+        .footer .socialLink:hover {
           color: var(--accent-cyan);
           border-color: var(--accent-cyan);
           background: rgba(0, 245, 255, 0.1);
@@ -71,7 +71,7 @@ const Footer = () => {
           transform: translateY(-5px) scale(1.1);
         }
 
-        @keyframes float {
+        @keyframes footerFloat {
           0% { transform: translateY(0); }
           50% { transform: translateY(-5px); }
           100% { transform: translateY(0); }
@@ -79,21 +79,22 @@ const Footer = () => {
 
         @media (max-width: 768px) {
           .footer {
-            padding: 1.5rem 1rem;
+            padding: 2rem 1rem;
           }
-          .socialContainer {
-            gap: 1rem;
+          .footer .socialContainer {
+            gap: 1.2rem;
           }
-          .socialLink {
-            width: 32px;
-            height: 32px;
+          .footer .socialLink {
+            width: 36px;
+            height: 36px;
           }
-          .icon {
-            width: 16px;
-            height: 16px;
+          .footer .icon {
+            width: 18px;
+            height: 18px;
           }
           .footer p {
             font-size: 0.85rem;
+            opacity: 0.8;
           }
         }
       `}</style>

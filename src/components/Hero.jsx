@@ -46,7 +46,6 @@ const Hero = () => {
   return (
     <section 
       className={styles.hero} 
-      id="home" 
       onMouseMove={handleMouseMove}
       style={{
         '--px': `${parallax.x}px`,

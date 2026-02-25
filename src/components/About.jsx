@@ -71,7 +71,7 @@ const About = () => {
   };
 
   return (
-    <section className={styles.about} id="about" onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
+    <section className={styles.about} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
       <div className={styles.gridOverlay}></div>
       <div className={styles.container}>
         <div className={styles.bioCard} ref={cardRef}>
