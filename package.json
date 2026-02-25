@@ -2,7 +2,7 @@
   "name": "portfolio",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://ayishashadhi.github.io/aysha-portfolio",
+  "homepage": "https://ayishashadhi.github.io/Ayisha-Shadhi-Portfolio",
   "type": "module",
   "scripts": {
     "dev": "vite",
