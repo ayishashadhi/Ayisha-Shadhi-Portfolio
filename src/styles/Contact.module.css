@@ -3,7 +3,11 @@
   padding: 6rem 2rem;
   position: relative;
   overflow: hidden;
-  background: radial-gradient(circle at 50% 50%, rgba(189, 0, 255, 0.05) 0%, transparent 70%);
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(189, 0, 255, 0.05) 0%,
+    transparent 70%
+  );
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,7 +34,7 @@
   text-shadow: var(--glow-cyan);
   margin-bottom: 1rem;
   letter-spacing: 5px;
-  word-break: break-all;
+  word-break: normal; /* Changed from break-all to avoid disjointed text */
 }
 
 @media (max-width: 768px) {
@@ -46,7 +50,12 @@
 .headerLine {
   width: 100px;
   height: 2px;
-  background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--accent-cyan),
+    transparent
+  );
   margin: 0 auto;
 }
 
@@ -56,7 +65,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: 
+  background-image:
     linear-gradient(rgba(0, 245, 255, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(0, 245, 255, 0.03) 1px, transparent 1px);
   background-size: 50px 50px;
@@ -99,19 +108,23 @@
 }
 
 @keyframes scanlineSweep {
-  from { transform: translateY(-100%); }
-  to { transform: translateY(100%); }
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(100%);
+  }
 }
 
 /* Glowing Corners */
 .container::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: 
+  background:
     linear-gradient(90deg, var(--accent-cyan) 2px, transparent 2px) 0 0,
     linear-gradient(180deg, var(--accent-cyan) 2px, transparent 2px) 0 0,
     linear-gradient(270deg, var(--accent-cyan) 2px, transparent 2px) 100% 100%,
@@ -156,9 +169,18 @@
   opacity: 0.3;
 }
 
-.control.close { background: #ff5f56; opacity: 1; }
-.control.minimize { background: #ffbd2e; opacity: 1; }
-.control.maximize { background: #27c93f; opacity: 1; }
+.control.close {
+  background: #ff5f56;
+  opacity: 1;
+}
+.control.minimize {
+  background: #ffbd2e;
+  opacity: 1;
+}
+.control.maximize {
+  background: #27c93f;
+  opacity: 1;
+}
 
 .terminalTitle {
   font-family: monospace;
@@ -168,9 +190,26 @@
   text-transform: uppercase;
 }
 
+.desktopTitle {
+  display: block;
+}
+.mobileTitle {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  .desktopTitle {
+    display: none;
+  }
+  .mobileTitle {
+    display: block;
+  }
+}
+
 .contentWrapper {
   padding: 3rem;
   position: relative;
+  z-index: 5; /* Ensure content is above decorative layers */
 }
 
 /* Initial "Connection" Text */
@@ -187,36 +226,78 @@
 }
 
 @keyframes blink {
-  50% { opacity: 0; }
+  50% {
+    opacity: 0;
+  }
 }
 
 /* Form Styles */
 .form {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 2.5rem;
 }
 
 .inputGroup {
   display: flex;
-  gap: 2rem;
+  gap: 2.5rem;
 }
 
 .formGroup {
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
   flex: 1;
+}
+
+.fieldHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0.5rem;
+}
+
+.fieldStatus {
+  font-family: monospace;
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  opacity: 0.6;
+  letter-spacing: 1px;
 }
 
 .input, .textarea {
   width: 100%;
-  background: var(--bg-deep);
+  box-sizing: border-box; /* Ensure padding/border don't cause overflow */
+  background: rgba(0, 0, 0, 0.4);
   border: 1px solid var(--glass-border);
   color: var(--text-primary);
-  padding: 1rem;
+  padding: 1.2rem;
   font-family: monospace;
   font-size: 1rem;
   transition: all 0.3s ease;
-  border-radius: 4px;
+  /* Manifest Clipped Corners: Bottom-Left and Top-Right */
+  clip-path: polygon(
+    0 0, 
+    calc(100% - 12px) 0, 
+    100% 12px, 
+    100% 100%, 
+    12px 100%, 
+    0 calc(100% - 12px)
+  );
+  box-shadow: inset 0 0 15px rgba(0, 245, 255, 0.05);
+  margin: 0;
+}
+
+.input:focus, .textarea:focus {
+  outline: none;
+  border-color: var(--accent-cyan);
+  background: rgba(0, 245, 255, 0.05);
+  box-shadow: inset 0 0 20px rgba(0, 245, 255, 0.15);
+}
+
+.input::placeholder, .textarea::placeholder {
+  color: var(--text-muted);
+  opacity: 0.3;
 }
 
 .textarea {
@@ -224,23 +305,21 @@
   min-height: 120px;
 }
 
-.input:focus, .textarea:focus {
+.input:focus,
+.textarea:focus {
   outline: none;
   border-color: var(--accent-cyan);
-  background: var(--bg-light);
-  box-shadow: var(--glow-cyan);
+  background: rgba(0, 245, 255, 0.05);
+  box-shadow: inset 0 0 20px rgba(0, 245, 255, 0.15);
 }
 
 .label {
-  position: absolute;
-  top: -0.8rem;
-  left: 0.8rem;
-  background: var(--bg-deep);
-  padding: 0 0.5rem;
+  background: transparent;
   color: var(--accent-cyan);
   font-family: monospace;
   font-size: 0.8rem;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 /* Submit Button */
@@ -281,15 +360,49 @@
 @media (max-width: 768px) {
   .inputGroup {
     flex-direction: column;
-    gap: 2rem;
+    gap: 2.5rem;
   }
   
   .contentWrapper {
-    padding: 2rem 1.5rem;
+    padding: 2.5rem 1.5rem;
   }
   
   .submitBtn {
     width: 100%;
+    padding: 1rem;
+    align-self: center;
+  }
+
+  .input, .textarea {
+    padding: 1.2rem 1rem;
+    font-size: 0.9rem;
+    /* Slightly smaller clips for mobile */
+    clip-path: polygon(
+      0 0, 
+      calc(100% - 10px) 0, 
+      100% 10px, 
+      100% 100%, 
+      10px 100%, 
+      0 calc(100% - 10px)
+    );
+  }
+  
+  .label {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .terminalHeader {
+    padding-right: 60px; /* Keep title away from menu button */
+  }
+  
+  .contentWrapper {
+    padding: 1.5rem 1rem;
+  }
+
+  .form {
+    gap: 2rem;
   }
 }
 
@@ -314,14 +427,20 @@
   border: 1px solid rgba(0, 245, 255, 0.3);
   transition: all 0.3s ease;
   position: relative;
-  background: rgba(0,0,0,0.2);
+  background: rgba(0, 0, 0, 0.2);
   /* Floating Animation with different delays */
   animation: float 3s ease-in-out infinite;
 }
 
-.socialLink:nth-child(2) { animation-delay: 0.5s; }
-.socialLink:nth-child(3) { animation-delay: 1s; }
-.socialLink:nth-child(4) { animation-delay: 1.5s; }
+.socialLink:nth-child(2) {
+  animation-delay: 0.5s;
+}
+.socialLink:nth-child(3) {
+  animation-delay: 1s;
+}
+.socialLink:nth-child(4) {
+  animation-delay: 1.5s;
+}
 
 .icon {
   width: 20px;
@@ -338,7 +457,13 @@
 }
 
 @keyframes float {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0); }
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }

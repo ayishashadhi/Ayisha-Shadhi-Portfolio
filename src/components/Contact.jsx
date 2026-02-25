@@ -28,7 +28,7 @@ const Contact = () => {
   };
 
   return (
-    <section className={styles.contact} id="contact">
+    <section className={styles.contact}>
       <div className={styles.gridOverlay}></div>
       <div className={styles.sectionHeader}>
         <h2 className={styles.heading}>
@@ -46,7 +46,8 @@ const Contact = () => {
             <span className={`${styles.control} ${styles.maximize}`}></span>
           </div>
           <div className={styles.terminalTitle}>
-            <DecipherText text="COMM_UPLINK_V.2.4" delay={500} />
+            <span className={styles.desktopTitle}>COMM_UPLINK_V.2.4</span>
+            <span className={styles.mobileTitle}>COMM_UPLINK</span>
           </div>
         </div>
 
@@ -58,6 +59,10 @@ const Contact = () => {
           <form className={styles.form} onSubmit={handleSubmit}>
             <div className={styles.inputGroup}>
               <div className={styles.formGroup}>
+                <div className={styles.fieldHeader}>
+                  <label className={styles.label}>// AGENT_NAME</label>
+                  <span className={styles.fieldStatus}>REQUIRED</span>
+                </div>
                 <input
                   type="text"
                   name="name"
@@ -66,10 +71,14 @@ const Contact = () => {
                   className={styles.input}
                   required
                   autoComplete="off"
+                  placeholder="IDENTIFY SELF..."
                 />
-                <label className={styles.label}>AGENT_NAME</label>
               </div>
               <div className={styles.formGroup}>
+                <div className={styles.fieldHeader}>
+                  <label className={styles.label}>// CONTACT_FREQ</label>
+                  <span className={styles.fieldStatus}>COMM_LINK</span>
+                </div>
                 <input
                   type="email"
                   name="email"
@@ -78,20 +87,24 @@ const Contact = () => {
                   className={styles.input}
                   required
                   autoComplete="off"
+                  placeholder="target@domain.ext"
                 />
-                <label className={styles.label}>CONTACT_FREQ (EMAIL)</label>
               </div>
             </div>
             
             <div className={styles.formGroup}>
+              <div className={styles.fieldHeader}>
+                <label className={styles.label}>// TRANSMISSION_DATA</label>
+                <span className={styles.fieldStatus}>ENCRYPT_ENABLED</span>
+              </div>
               <textarea
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
                 className={styles.textarea}
                 required
+                placeholder="TYPE MESSAGE HERE..."
               ></textarea>
-              <label className={styles.label}>TRANSMISSION_DATA</label>
             </div>
             
             <button type="submit" className={styles.submitBtn} disabled={status === 'SENDING'}>
@@ -100,7 +113,6 @@ const Contact = () => {
                 {status === 'SENDING' && 'UPLOADING...'}
                 {status === 'SENT' && 'UPLOAD COMPLETE'}
               </span>
-// ... form ending ...
             </button>
           </form>
         </div>
