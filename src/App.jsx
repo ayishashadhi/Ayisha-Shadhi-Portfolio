@@ -33,6 +33,10 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
+  };
+
   useEffect(() => {
     const handleGlobalMouseMove = (e) => {
       const { clientX, clientY } = e;

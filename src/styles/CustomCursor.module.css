@@ -1,36 +1,32 @@
 .cursorDot {
     position: fixed;
-    /* Use global CSS variables for zero-lag position update */
-    left: var(--mouse-x);
-    top: var(--mouse-y);
+    top: 0;
+    left: 0;
     width: 6px;
     height: 6px;
     background: var(--accent-cyan);
     border-radius: 50%;
     pointer-events: none;
     z-index: 10001;
-    transform: translate(-50%, -50%);
+    /* transform is handled by GSAP xPercent/yPercent */
     box-shadow: 0 0 10px var(--accent-cyan);
-    /* Transition only for visual state changes, NOT position */
-    transition: width 0.3s, height 0.3s, background 0.3s, transform 0.2s;
+    /* Transition only for visual state changes */
+    transition: width 0.3s, height 0.3s, background 0.3s;
 }
 
 .cursorRing {
     position: fixed;
-    /* Use global CSS variables for zero-lag position update */
-    left: var(--mouse-x);
-    top: var(--mouse-y);
+    top: 0;
+    left: 0;
     width: 40px;
     height: 40px;
     border: 1px solid var(--accent-cyan);
     border-radius: 50%;
     pointer-events: none;
     z-index: 10000;
-    transform: translate(-50%, -50%);
-    /* Magnetic trailing effect - transition only for smoothing if desired */
-    transition: left 0.08s ease-out, 
-                top 0.08s ease-out, 
-                width 0.3s ease, 
+    /* transform is handled by GSAP xPercent/yPercent */
+    /* Magnetic trailing effect - GSAP handles the smoothness now */
+    transition: width 0.3s ease, 
                 height 0.3s ease, 
                 border-color 0.3s ease;
     background: radial-gradient(circle, rgba(0, 245, 255, 0.05) 0%, transparent 70%);
