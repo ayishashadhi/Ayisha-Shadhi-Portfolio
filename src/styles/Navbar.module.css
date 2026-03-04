@@ -261,63 +261,65 @@
 
   /* Inner wrapper to handle centering while ensuring bottom items aren't cut off */
   .logoCircle {
-    width: 42px;
-    height: 42px;
+    width: 36px;
+    height: 36px;
   }
 
   .logoImage {
-    height: 24px;
+    height: 18px;
   }
 
   .toggleTrack {
-    width: 42px;
-    height: 42px;
+    width: 36px;
+    height: 36px;
   }
 
   .toggleIcon {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 
   .linksWrapper {
     display: flex;
     flex-direction: column;
-    gap: 2.2rem;
+    gap: 1.2rem;
     align-items: center;
     width: 100%;
-    padding: 6rem 2rem 8rem; /* Reduced padding */
+    padding: 4rem 2rem 6rem;
     min-height: min-content;
     margin: auto 0;
   }
 
   .link {
-    font-size: 1.5rem; /* Slightly smaller for better fit */
+    font-size: 1.2rem;
     font-weight: 700;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-transform: uppercase;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     width: fit-content;
     color: var(--text-primary);
     transition: all 0.3s ease;
   }
 
   .linkNumber {
-    font-size: 0.7rem;
-    margin-bottom: 0.5rem;
+    font-size: 0.6rem;
+    margin-bottom: 0.3rem;
     letter-spacing: 1px;
     color: var(--accent-cyan);
     opacity: 1;
   }
 
   .scrolled {
-    top: 1rem;
-    right: 5%;
+    top: 0.8rem;
+    right: 4%;
   }
   .navbar {
-    top: 1rem;
+    top: 0.8rem;
+    right: 4%;
   }
   .themeToggle {
-    top: 1rem;
+    top: 0.8rem;
+    left: 4%;
   }
 }
